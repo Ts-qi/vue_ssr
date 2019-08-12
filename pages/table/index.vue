@@ -94,8 +94,13 @@ export default{
     search() {
      let  arrs=[]
       if( this.searchName !='') {
-         arrs =  this.tableData.filter(ele => ele.title == this.searchName);
-      console.log( this.tableData,'v1')
+        //  arrs =  this.tableData.filter(ele => ele.title == this.searchName);
+      //匹配模糊搜索
+      this.tableData.forEach( ele => {
+        if(ele.title.indexOf(this.searchName)>= 0) {
+          arrs.push(ele)
+        }
+      })
 
       }else{
         let data = JSON.parse(localStorage.tableData)
